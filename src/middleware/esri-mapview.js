@@ -61,7 +61,7 @@ const esriMiddleware = store => next => (action) => {
 
       arcgis.mapView.ui.add(arcgis.legend, 'top-right');
 
-      return arcgis.mapView.when(() => {
+      arcgis.mapView.when(() => {
         arcgis.mapView.on('click', (event) => {
           const fetchingAction = { type: FETCHING_LAYER_INFO };
           store.dispatch(fetchingAction);
@@ -90,6 +90,7 @@ const esriMiddleware = store => next => (action) => {
           error: e,
         });
       });
+      break;
     }
     case TOGGLE_VISIBLE_LAYER: {
       if (!action.id) break;

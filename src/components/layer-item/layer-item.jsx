@@ -10,8 +10,8 @@ import { toggleVisibleLayer } from '../../reducer/mapview/actions';
 export const LayerItem = ({
   id,
   label,
-  dispatch,
   visible,
+  dispatch,
 }) => {
   const handleClick = () => {
     const action = toggleVisibleLayer(id);
