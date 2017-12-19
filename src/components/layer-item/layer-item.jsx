@@ -7,22 +7,28 @@ import '../../styles/components/layer-item.scss';
 
 import { toggleVisibleLayer } from '../../reducer/mapview/actions';
 
-export const LayerItem = ({ layer, dispatch, visible }) => {
+export const LayerItem = ({
+  id,
+  label,
+  dispatch,
+  visible,
+}) => {
   const handleClick = () => {
-    const action = toggleVisibleLayer(layer.id);
+    const action = toggleVisibleLayer(id);
     dispatch(action);
   };
 
   return (
-    <div className="layer-item">
-      <Checkbox visible={visible} onClick={handleClick} />
-      <div className="layer-item-label">{layer.label}</div>
+    <div className="layer-item pointer" onClick={handleClick}>
+      <Checkbox visible={visible} />
+      <div className="layer-item-label">{label}</div>
     </div>
   );
 };
 
 LayerItem.propTypes = {
-  layer: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   visible: PropTypes.bool,
 };
@@ -35,7 +41,7 @@ LayerItem.defaultProps = {
 //   visible: state.mapview.visibleLayers.indexOf(ownProps.layer.id) > -1,
 // });
 const mapStateToProps = ({ mapview: { visibleLayers } }, ownProps) => ({
-  visible: visibleLayers.indexOf(ownProps.layer.id) > -1,
+  visible: visibleLayers.indexOf(ownProps.id) > -1,
 });
 
 export default connect(mapStateToProps)(LayerItem);

@@ -6,7 +6,7 @@ import LayerItem from '../layer-item/layer-item';
 
 export const LayerPanel = ({ mapLayers }) => {
   const layerList = mapLayers.map(l => (
-    <LayerItem key={l.id} layer={l} />
+    <LayerItem key={l.id} id={l.id} label={l.label} />
   ));
 
   return (

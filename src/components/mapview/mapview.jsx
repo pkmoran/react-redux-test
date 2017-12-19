@@ -11,8 +11,6 @@ export class MapView extends Component {
     dispatch(action);
   }
 
-  // TODO: we should initialize some sort of event, like a click or something
-
   render() {
     const { error } = this.props;
     return (
