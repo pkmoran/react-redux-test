@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './store/store';
 
-import MapView from './components/mapview/mapview';
+import App from './components/app';
 
 import './styles/main.scss';
 
@@ -12,7 +12,7 @@ const appNode = document.getElementById('app-container');
 
 render(
   <Provider store={store}>
-    <MapView />
+    <App />
   </Provider>,
   appNode,
 );

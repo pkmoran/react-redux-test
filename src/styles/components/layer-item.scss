@@ -1,0 +1,10 @@
+.layer-item {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+
+  .layer-item-label {
+    position: relative;
+    left: 15px;
+  }
+}

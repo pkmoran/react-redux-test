@@ -1,0 +1,15 @@
+.layer-checkbox {
+  display: flex;
+  height: 15px;
+  width: 15px;
+  border: solid 1px black;
+
+  &.checked {
+    background: palegreen;
+  }
+
+  .checkmark {
+    height: 100%;
+    width: 100%;
+  }
+}

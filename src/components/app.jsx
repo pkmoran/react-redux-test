@@ -1,27 +1,29 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
+// import { connect } from 'react-redux';
+// import { PropTypes } from 'prop-types';
 
 import Mapview from './mapview/mapview';
 import LayerPanel from './layer-panel/layer-panel';
+import LayerInfoPanel from './layer-info-panel/layer-info-panel';
 
-const App = ({ layers }) => (
+const App = () => (
   <div className="container">
     <Mapview />
-    <LayerPanel layers={layers} />
+    <LayerPanel />
+    <LayerInfoPanel />
   </div>
 );
 
-App.propTypes = {
-  layers: PropTypes.array,
-};
+// App.propTypes = {
+//   layers: PropTypes.array,
+// };
 
-App.defaultProps = {
-  layers: [],
-};
+// App.defaultProps = {
+//   layers: [],
+// };
 
-const mapStateToProps = ({ mapview: { layers } }) => ({
-  mapLayers: layers,
-});
+// const mapStateToProps = ({ mapview: { layers } }) => ({
+//   mapLayers: layers,
+// });
 
-export default connect(mapStateToProps)(App);
+export default App;

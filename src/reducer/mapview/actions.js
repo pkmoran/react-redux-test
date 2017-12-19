@@ -6,3 +6,10 @@ export function initMap(container) {
     container,
   };
 }
+
+export function toggleVisibleLayer(id) {
+  return {
+    type: types.TOGGLE_VISIBLE_LAYER,
+    id,
+  };
+}

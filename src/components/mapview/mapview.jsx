@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { initMap } from '../../reducer/mapview/actions';
 
 export class MapView extends Component {
   componentDidMount() {
-    this.props.init(this.mapview);
+    const { dispatch } = this.props;
+    const action = initMap(this.mapview);
+    dispatch(action);
   }
+
+  // TODO: we should initialize some sort of event, like a click or something
 
   render() {
     const { error } = this.props;
@@ -25,7 +28,7 @@ export class MapView extends Component {
 }
 
 MapView.propTypes = {
-  init: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   error: PropTypes.bool,
 };
 
@@ -33,13 +36,9 @@ MapView.defaultProps = {
   error: false,
 };
 
-const mapDispatchToProps = dispatch => ({
-  init: bindActionCreators(initMap, dispatch),
-});
-
 const mapStateToProps = ({ mapview: { layers, error } }) => ({
   mapLayers: layers,
   error,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapView);
+export default connect(mapStateToProps)(MapView);
