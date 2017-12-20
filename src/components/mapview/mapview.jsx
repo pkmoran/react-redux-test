@@ -6,9 +6,10 @@ import { initMap } from '../../reducer/mapview/actions';
 
 export class MapView extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    const action = initMap(this.mapview);
-    dispatch(action);
+    // const { dispatch } = this.props;
+    // const action = initMap(this.mapview);
+    // dispatch(action);
+    this.props.initMap(this.mapview);
   }
 
   render() {
@@ -26,7 +27,8 @@ export class MapView extends Component {
 }
 
 MapView.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  initMap: PropTypes.func.isRequired,
   error: PropTypes.bool,
 };
 
@@ -39,4 +41,4 @@ const mapStateToProps = ({ mapview: { layers, error } }) => ({
   error,
 });
 
-export default connect(mapStateToProps)(MapView);
+export default connect(mapStateToProps, { initMap })(MapView);

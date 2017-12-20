@@ -1,27 +1,20 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 
-import LayerItem from '../layer-item/layer-item';
+import { toggleVisibleLayer } from '../../reducer/mapview/actions';
 
-export const LayerPanel = ({ mapLayers }) => {
-  const layerList = mapLayers.map(l => (
-    <LayerItem key={l.id} id={l.id} label={l.label} />
-  ));
+import LayerList from '../layer-list/layer-list';
 
-  return (
-    <div className="layer-panel-container">
-      {layerList}
-    </div>
-  );
-};
-
-LayerPanel.propTypes = {
-  mapLayers: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = ({ mapview: { layers } }) => ({
+const mapStateToProps = ({ mapview: { layers, visibleLayers } }) => ({
   mapLayers: layers,
+  visibleLayers,
 });
 
-export default connect(mapStateToProps)(LayerPanel);
+const mapDispatchToProps = dispatch => ({
+  handleLayerClick: (id) => {
+    dispatch(toggleVisibleLayer(id));
+  },
+});
+
+const LayerPanel = connect(mapStateToProps, mapDispatchToProps)(LayerList);
+
+export default LayerPanel;
