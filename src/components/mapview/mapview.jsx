@@ -41,4 +41,10 @@ const mapStateToProps = ({ mapview: { layers, error } }) => ({
   error,
 });
 
-export default connect(mapStateToProps, { initMap })(MapView);
+const mapDispatchToProps = dispatch => ({
+  initMap: (container) => {
+    dispatch(initMap(container));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapView);
