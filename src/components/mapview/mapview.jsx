@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { initMap } from '../../reducer/mapview/actions';
 
+import '../../styles/components/mapview.scss';
+
 export class MapView extends Component {
   componentDidMount() {
     // const { dispatch } = this.props;

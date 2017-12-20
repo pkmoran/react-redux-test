@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 
 import LayerItem from '../layer-item/layer-item';
 
+import '../../styles/components/layer-list.scss';
+
 /*
 ** This component doesn't do anything. It just
 ** gets it's props and renders the layer items
